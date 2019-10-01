@@ -69,7 +69,7 @@
     force: yes
     mode: u=rwx,g=rx,o=rx
   when: IS_STACKTRACE_ENABLE == 'false'
-  
+
 - name: Copy petclinic service script to /etc/init.d/ dir
   become: yes
   template:
@@ -80,6 +80,10 @@
   when: IS_STACKTRACE_ENABLE == 'true'
 
 - name: Start and enable petclinic services for automatic start
-  command: service petclinic start
   become: yes
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+    name: petclinic
   when: IS_PRIMARY_DEPLOYMENT == 'true'

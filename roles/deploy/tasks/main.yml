@@ -79,7 +79,7 @@
     mode: u=rwx,g=rx,o=rx
   when: IS_STACKTRACE_ENABLE == 'true'
   
-- name: Copy petclinic service script to /etc/init.d/ dir
+- name: Copy petclinic service script to /lib/systemd/
   become: yes
   template:
     src: petclinic.service

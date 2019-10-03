@@ -86,9 +86,5 @@
     daemon_reload: yes
     enabled: yes
     name: petclinic
-  when: IS_PRIMARY_DEPLOYMENT == 'true' and OS_DISTRO_TYPE != 'ubuntu'
+  when: IS_PRIMARY_DEPLOYMENT == 'true'
   
-- name: Start and enable petclinic services for automatic start (ubuntu)
-  command: service petclinic start
-  become: yes
-  when: OS_DISTRO_TYPE == 'ubuntu'

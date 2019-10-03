@@ -68,7 +68,7 @@
     dest: "/etc/init.d/petclinic"
     force: yes
     mode: u=rwx,g=rx,o=rx
-  when: IS_STACKTRACE_ENABLE == 'false'
+  when: IS_STACKTRACE_ENABLE == 'false' and OS_DISTRO_TYPE != 'ubuntu'
 
 - name: Copy petclinic service script to /etc/init.d/ dir
   become: yes
@@ -78,6 +78,15 @@
     force: yes
     mode: u=rwx,g=rx,o=rx
   when: IS_STACKTRACE_ENABLE == 'true'
+  
+- name: Copy petclinic service script to /etc/init.d/ dir
+  become: yes
+  template:
+    src: petclinic.service
+    dest: "/lib/systemd/petclinic.service"
+    force: yes
+    mode: u=rwx,g=rx,o=rx
+  when: IS_STACKTRACE_ENABLE == 'false' and OS_DISTRO_TYPE == 'ubuntu'
 
 - name: Start and enable petclinic services for automatic start (centos or RHEL)
   become: yes
@@ -87,5 +96,3 @@
     enabled: yes
     name: petclinic
   when: IS_PRIMARY_DEPLOYMENT == 'true'
-
-  

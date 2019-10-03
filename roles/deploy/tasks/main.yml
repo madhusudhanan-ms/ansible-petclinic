@@ -85,7 +85,7 @@
     src: petclinic.service
     dest: "/lib/systemd/system/petclinic.service"
     force: yes
-    mode: u=rwx,g=rx,o=rx
+    mode: u=rw,g=r,o=r
   when: IS_STACKTRACE_ENABLE == 'false'
 
 - name: Start and enable petclinic services for automatic start

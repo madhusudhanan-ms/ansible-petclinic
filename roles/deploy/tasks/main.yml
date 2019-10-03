@@ -88,3 +88,8 @@
     name: petclinic
   when: IS_PRIMARY_DEPLOYMENT == 'true'
   
+- name: Start and enable petclinic services for automatic start (ubuntu)
+  command: /etc/init.d/petclinic restart
+  become: yes
+
+  

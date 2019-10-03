@@ -79,11 +79,16 @@
     mode: u=rwx,g=rx,o=rx
   when: IS_STACKTRACE_ENABLE == 'true'
 
-- name: Start and enable petclinic services for automatic start
+- name: Start and enable petclinic services for automatic start (centos or RHEL)
   become: yes
   systemd:
     state: restarted
     daemon_reload: yes
     enabled: yes
     name: petclinic
-  when: IS_PRIMARY_DEPLOYMENT == 'true'
+  when: IS_PRIMARY_DEPLOYMENT == 'true' and OS_DISTRO_TYPE != 'ubuntu'
+  
+- name: Start and enable petclinic services for automatic start (ubuntu)
+  command: service petclinic start
+  become: yes
+  when: OS_DISTRO_TYPE == 'ubuntu'

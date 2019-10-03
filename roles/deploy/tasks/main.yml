@@ -91,6 +91,6 @@
 - name: Start and enable petclinic services for automatic start (ubuntu)
   command: /etc/init.d/petclinic restart
   become: yes
-  when: OS_DISTRO_TYPE != 'ubuntu'
+  when: OS_DISTRO_TYPE == 'ubuntu'
 
   

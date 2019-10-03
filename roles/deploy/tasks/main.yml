@@ -89,7 +89,7 @@
   when: IS_PRIMARY_DEPLOYMENT == 'true' and OS_DISTRO_TYPE != 'ubuntu'
   
 - name: Start and enable petclinic services for automatic start (ubuntu)
-  command: /etc/init.d/petclinic restart
+  command: /etc/init.d/petclinic start
   become: yes
   when: OS_DISTRO_TYPE == 'ubuntu'
 

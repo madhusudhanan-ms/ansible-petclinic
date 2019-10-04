@@ -1,14 +1,17 @@
 [Unit]
-Description=Petclinic Application
-
+Description= Petclinic Application
+After=network.target
+ 
 [Service]
+WorkingDirectory=/etc/init.d/
 User=root
-WorkingDirectory=/home/devops/petclinic
+Group=root
+Type=forking
 ExecStart=/bin/bash /etc/init.d/petclinic.sh start
-SuccessExitStatus=143
-TimeoutStopSec=10
-Restart=on-failure
-RestartSec=5
-
+ExecStop=/bin/bash /etc/init.d/petclinic.sh stop
+PIDFile=/home/devops/petclinic/petclinic.pid
+RestartSec=15
+Restart=always
+ 
 [Install]
 WantedBy=multi-user.target

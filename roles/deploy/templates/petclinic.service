@@ -3,5 +3,4 @@ Description=petclinic service
 
 [Service]
 ExecStart=/bin/bash /etc/init.d/petclinic.sh start
-ExecStop=/bin/bash /etc/init.d/petclinic.sh stop
-#Restart=always
+

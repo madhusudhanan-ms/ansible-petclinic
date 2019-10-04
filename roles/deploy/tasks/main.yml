@@ -90,7 +90,7 @@
 
 - name: Start and enable petclinic services for automatic start
   become: yes
-  systemd:
+  service:
     state: restarted
     daemon_reload: yes
     enabled: yes

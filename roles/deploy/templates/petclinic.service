@@ -1,6 +1,14 @@
 [Unit]
-Description=petclinic service
+Description=Petclinic Application
 
 [Service]
+User=ubuntu
+WorkingDirectory=/home/devops/petclinic
 ExecStart=/bin/bash /etc/init.d/petclinic.sh start
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
 
+[Install]
+WantedBy=multi-user.target

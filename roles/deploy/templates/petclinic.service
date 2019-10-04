@@ -2,7 +2,7 @@
 Description=Petclinic Application
 
 [Service]
-User=ubuntu
+User=root
 WorkingDirectory=/home/devops/petclinic
 ExecStart=/bin/bash /etc/init.d/petclinic.sh start
 SuccessExitStatus=143

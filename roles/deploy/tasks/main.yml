@@ -65,7 +65,7 @@
   become: yes
   template:
     src: petclinic
-    dest: "/etc/init.d/petclinic.sh"
+    dest: "/etc/init.d/petclinic"
     force: yes
     mode: u=rwx,g=rx,o=rx
   when: IS_STACKTRACE_ENABLE == 'false'
@@ -74,7 +74,7 @@
   become: yes
   template:
     src: petclinic-stacktrace
-    dest: "/etc/init.d/petclinic.sh"
+    dest: "/etc/init.d/petclinic"
     force: yes
     mode: u=rwx,g=rx,o=rx
   when: IS_STACKTRACE_ENABLE == 'true'

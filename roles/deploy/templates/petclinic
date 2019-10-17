@@ -3,7 +3,17 @@
 # chkconfig: - 99 10
 SERVICE_NAME={{ APP_NAME }}
 BASE_DIR={{ DEPLOY_PATH }}
+
+ENABLE_STACKTRACE={{ IS_STACKTRACE_ENABLE }}
+APM_SERVER={{ APM_SERVER }}
+
+if $ENABLE_STACKTRACE
+then
+START_COMMAND="nohup java -javaagent:/home/devops/petclinic/apm.jar -Delastic.apm.service_name=petclinic -Delastic.apm.server_urls=http://$APM_SERVER:8200 -Delastic.apm.metrics_interval=0s -Delastic.apm.span_frames_min_duration=-1ms  -jar $BASE_DIR/$SERVICE_NAME.jar --spring.profiles.active=mysql"
+else
 START_COMMAND="nohup java -jar $BASE_DIR/$SERVICE_NAME.jar --spring.profiles.active=mysql"
+fi
+
 PID_FILE=$BASE_DIR/$SERVICE_NAME.pid
 LOG_DIR={{ LOG_PATH }}
  

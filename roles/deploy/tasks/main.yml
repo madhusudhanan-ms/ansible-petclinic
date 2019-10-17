@@ -61,23 +61,13 @@
     dest: /home/devops/petclinic/apm.jar
     mode: '0777'
 
-- name: Copy petclinic service script to /etc/init.d/ dir when stacktrace is disabled
+- name: Copy petclinic service script to /etc/init.d/ dir
   become: yes
   template:
     src: petclinic
     dest: "/etc/init.d/petclinic"
     force: yes
     mode: u=rwx,g=rx,o=rx
-  when: IS_STACKTRACE_ENABLE == 'false'
-
-- name: Copy petclinic service script to /etc/init.d/ dir when stacktrace is enabled
-  become: yes
-  template:
-    src: petclinic-stacktrace
-    dest: "/etc/init.d/petclinic"
-    force: yes
-    mode: u=rwx,g=rx,o=rx
-  when: IS_STACKTRACE_ENABLE == 'true'
   
 - name: Copy petclinic service script to /lib/systemd/system/
   become: yes

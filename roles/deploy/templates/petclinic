@@ -7,9 +7,13 @@ BASE_DIR={{ DEPLOY_PATH }}
 ENABLE_STACKTRACE={{ IS_STACKTRACE_ENABLE }}
 APM_SERVER={{ APM_SERVER }}
 
+TAG_APPNAME={{ TAG_APPNAME }}
+TAG_NAME="petclinic-appserver-1"
+
+
 if $ENABLE_STACKTRACE
 then
-START_COMMAND="nohup java -javaagent:/home/devops/petclinic/apm.jar -Delastic.apm.service_name=petclinic -Delastic.apm.server_urls=http://$APM_SERVER:8200 -Delastic.apm.metrics_interval=0s -Delastic.apm.span_frames_min_duration=-1ms  -jar $BASE_DIR/$SERVICE_NAME.jar --spring.profiles.active=mysql"
+START_COMMAND="nohup java -javaagent:/home/devops/petclinic/apm.jar -Delastic.apm.service_name=petclinic -Delastic.apm.server_urls=http://$APM_SERVER:8200 -Delastic.apm.metrics_interval=0s -Delastic.apm.span_frames_min_duration=-1ms -Delastic.apm.global_labels==_tag_appName=$TAG_APPNAME,_tag_Name=$TAG_NAME -jar $BASE_DIR/$SERVICE_NAME.jar --spring.profiles.active=mysql"
 else
 START_COMMAND="nohup java -jar $BASE_DIR/$SERVICE_NAME.jar --spring.profiles.active=mysql"
 fi

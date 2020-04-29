@@ -8,7 +8,7 @@ ENABLE_STACKTRACE={{ IS_STACKTRACE_ENABLE }}
 APM_SERVER={{ APM_SERVER }}
 
 TAG_APPNAME={{ TAG_APPNAME }}
-TAG_NAME="petclinic-appserver-1"
+TAG_NAME=petclinic-appserver-1
 
 
 if $ENABLE_STACKTRACE

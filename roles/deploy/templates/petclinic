@@ -23,7 +23,7 @@ TAG_NAME=petclinic-appserver-1
 
 if $ENABLE_STACKTRACE
 then
-START_COMMAND="nohup java -javaagent:/opt/sfagent/sftrace/sfjava/sftrace-java-agent-1.0.jar -Delastic.apm.service_name=petclinic -Delastic.apm.server_urls=http://$APM_SERVER:8200 -Delastic.apm.metrics_interval=0s -Delastic.apm.span_frames_min_duration=-1ms -Delastic.apm.global_labels=_tag_appName=$TAG_APPNAME,_tag_Name=$TAG_NAME -jar $BASE_DIR/$SERVICE_NAME.jar --spring.profiles.active=mysql"
+START_COMMAND="nohup java -javaagent:/opt/sfagent/sftrace/sfjava/sftrace-java-agent-1.0.jar -jar $BASE_DIR/$SERVICE_NAME.jar --spring.profiles.active=mysql"
 else
 START_COMMAND="nohup java -jar $BASE_DIR/$SERVICE_NAME.jar --spring.profiles.active=mysql"
 fi

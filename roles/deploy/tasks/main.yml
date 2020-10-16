@@ -61,19 +61,6 @@
     dest: /home/devops/petclinic/apm.jar
     mode: '0777'
 
-# - name: Add enviornment in /etc/profile file
-#   become: yes
-#   lineinfile:
-#     dest: /etc/profile
-#     line: "{{ item }}"
-#   with_items:
-#     - "export ELASTIC_APM_USE_PATH_AS_TRANSACTION_NAME=true"
-#     - "export ELASTIC_APM_DISABLE_INSTRUMENTATIONS=spring-mvc"
-#     - "export ELASTIC_APM_URL_GROUPS=/owners/pets/edit,/owners/pets/,/owners/edit/,/owners/"
-    
-# - name: Source the /etc/profile file
-#   shell: source /etc/profile
-
 - name: Copy petclinic service script to /etc/init.d/ dir
   become: yes
   template:

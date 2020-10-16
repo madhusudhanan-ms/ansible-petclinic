@@ -7,6 +7,9 @@ WorkingDirectory=/etc/init.d/
 User=root
 Group=root
 Type=forking
+Environment="ELASTIC_APM_USE_PATH_AS_TRANSACTION_NAME=true"
+Environment="ELASTIC_APM_DISABLE_INSTRUMENTATIONS=spring-mvc"
+Environment="ELASTIC_APM_URL_GROUPS=/owners/pets/edit,/owners/pets/,/owners/edit/,/owners/"
 ExecStart=/bin/bash /etc/init.d/petclinic start
 ExecStop=/bin/bash /etc/init.d/petclinic stop
 PIDFile=/home/devops/petclinic/petclinic.pid

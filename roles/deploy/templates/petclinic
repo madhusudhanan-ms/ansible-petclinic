@@ -9,6 +9,7 @@
 # Default-Stop:
 # Short-Description: petclinic
 # Description:       petclinic
+### END INIT INFO
 
 # chkconfig: - 99 10
 SERVICE_NAME={{ APP_NAME }}

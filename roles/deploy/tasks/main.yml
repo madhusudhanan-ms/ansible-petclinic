@@ -85,3 +85,16 @@
     enabled: yes
     name: petclinic
   when: IS_PRIMARY_DEPLOYMENT == 'true'
+
+- name: Add enviornment in /etc/environment file
+  become: yes
+  lineinfile:
+    dest: /etc/environment
+    line: "{{ item }}"
+  with_items:
+    - "export ELASTIC_APM_USE_PATH_AS_TRANSACTION_NAME=true"
+    - "export ELASTIC_APM_DISABLE_INSTRUMENTATIONS=spring-mvc"
+    - "export ELASTIC_APM_URL_GROUPS=/owners/pets//edit,/owners/pets/,/owners/edit/,/owners/"
+    
+- name: Source the /etc/environment file
+    shell: source /etc/environment

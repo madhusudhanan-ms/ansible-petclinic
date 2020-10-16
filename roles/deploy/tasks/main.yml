@@ -97,4 +97,4 @@
     - "export ELASTIC_APM_URL_GROUPS=/owners/pets//edit,/owners/pets/,/owners/edit/,/owners/"
     
 - name: Source the /etc/environment file
-    shell: source /etc/environment
+  shell: source /etc/environment

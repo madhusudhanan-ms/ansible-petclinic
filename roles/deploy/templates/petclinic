@@ -24,7 +24,7 @@ TAG_NAME=petclinic-appserver-1
 
 if $ENABLE_STACKTRACE
 then
-START_COMMAND="nohup java -javaagent:/opt/sfagent/sftrace/java/sftrace-java-agent.jar -jar $BASE_DIR/$SERVICE_NAME.jar --spring.profiles.active=mysql"
+START_COMMAND="nohup java -javaagent:/opt/sfagent/sftrace/java/sftrace-java-agent.jar -Delastic.apm.enable_log_correlation=true -jar $BASE_DIR/$SERVICE_NAME.jar --spring.profiles.active=mysql"
 else
 START_COMMAND="nohup java -jar $BASE_DIR/$SERVICE_NAME.jar --spring.profiles.active=mysql"
 fi
